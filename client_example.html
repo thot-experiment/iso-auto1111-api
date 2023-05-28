@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API demo</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-eval' 'unsafe-inline' data:" />
+    <style>
+      #gallery {
+        width: 80%;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: flex-start;
+      }
+
+      #gallery img {
+        max-width: 100%;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="controls">
+      <input id="basepath" type="text" value="127.0.0.1:7860">
+      <button id="connect">connect</button>
+    </div>
+    <div id="gallery">
+    </div>
+    <script type="module">
+      import SD_API from '/SD_API.mjs'
+
+      connect.onclick = async () => {
+      let api = await SD_API('http://'+basepath.value.trim(), {dev: true})
+      controls.innerHTML = `<br><textarea id="prompt_box" rows="4" cols="50">ai, plz give waifu?</textarea>
+<br><button id="gen">generate waifu</button>`
+
+      gen.onclick = async () => {
+        let result = await api['/sdapi/v1/txt2img'].POST.call({prompt: prompt_box.value, steps: 20})
+
+        let  img = new Image()
+        img.src = `data:image/png;base64,${result.images[0]}`
+        gallery.appendChild(img)
+      }
+      Object.assign(window, {api, SD_API})
+    }
+    </script>
+  </body>
+</html>

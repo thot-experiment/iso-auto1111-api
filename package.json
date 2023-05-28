@@ -1,0 +1,23 @@
+{
+  "name": "iso-auto1111-api",
+  "version": "0.0.1",
+  "description": "auto1111 api wrapper that works the same node and browser",
+  "main": "SD_API.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/thot-experiment/iso-auto1111-api"
+  },
+  "keywords": [
+    "stable",
+    "diffusion",
+    "auto1111",
+    "automatic1111",
+    "sd",
+    "webui"
+  ],
+  "author": "thot-experiment",
+  "license": "MIT"
+}
