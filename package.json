@@ -1,6 +1,6 @@
 {
   "name": "iso-auto1111-api",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "auto1111 api wrapper that works the same node and browser",
   "main": "SD_API.mjs",
   "scripts": {
