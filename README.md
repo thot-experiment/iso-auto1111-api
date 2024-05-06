@@ -8,6 +8,13 @@ I generally think everyone else puts too much library in their libraries, so thi
 - [stable-diffusion-webapi](https://www.npmjs.com/package/stable-diffusion-webapi)
 - [stable-diffusion-client](https://www.npmjs.com/package/stable-diffusion-client)
 
+This is now just a simple wrapper for [openapi-autowrapper](https://www.npmjs.com/package/openapi-autowrapper) because there was nothing auto1111 specific in this repo and I wanted to reuse the introspection/documentation code for my oobabooga api wrapper.
+
+## Changelog
+
+#### 1.0.0
+endpoints no longer require or support `POST.call(...)` you can just use `POST(...)` directly
+
 ## Usage
 
 Install with NPM or just clone this repo, you'll also need to have [auto1111](https://github.com/AUTOMATIC1111/stable-diffusion-webui/) running somewhere with `--api` and probably also `--cors-allow-origins *` and `--listen` 
@@ -36,7 +43,7 @@ or you can code against the api in node
 ```js
 import SD_API from '/SD_API.mjs'
 let api = await SD_API() //SD_API() defaults to SD_API('http://localhost:7860')
-let response = await api['/sdapi/v1/txt2img'].call({prompt: 'an angel with a shotgun'}) //nightcore remix
+let response = await api['/sdapi/v1/txt2img'].POST({prompt: 'an angel with a shotgun'}) //nightcore remix
 ///////
 > response
 > {
@@ -50,7 +57,7 @@ or in the browser
 import SD_API from '/SD_API.mjs'
 
 let api = await SD_API() //SD_API() defaults to SD_API('http://localhost:7860')
-let waifu = await api['/sdapi/v1/txt2img'].POST.call({prompt: 'a purple witch'}) //ask for a waifu
+let waifu = await api['/sdapi/v1/txt2img'].POST({prompt: 'a purple witch'}) //ask for a waifu
 let img = new Image()
 img.src = `data:image/png;base64,${waifu.images[0]}`
 

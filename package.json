@@ -19,5 +19,8 @@
     "webui"
   ],
   "author": "thot-experiment",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "openapi-autowrapper": "^1.0.0"
+  }
 }

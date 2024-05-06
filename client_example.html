@@ -27,6 +27,13 @@
     </div>
     <div id="gallery">
     </div>
+    <script type="importmap">
+      {
+        "imports": {
+          "openapi-autowrapper": "./node_modules/OpenAPI-autowrapper/OpenAPI.mjs"
+        }
+      }
+    </script>
     <script type="module">
       import SD_API from '/SD_API.mjs'
 
@@ -36,7 +43,7 @@
 <br><button id="gen">generate waifu</button>`
 
       gen.onclick = async () => {
-        let result = await api['/sdapi/v1/txt2img'].POST.call({prompt: prompt_box.value, steps: 20})
+        let result = await api['/sdapi/v1/txt2img'].POST({prompt: prompt_box.value, steps: 20})
 
         let  img = new Image()
         img.src = `data:image/png;base64,${result.images[0]}`

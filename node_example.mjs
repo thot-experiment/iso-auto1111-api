@@ -25,7 +25,7 @@ if (isDebug) {
 
 while (!isDebug) {
   let prompt = await rl.question('what would you like to generate (default: waifu): ') || 'waifu'
-  let response = await api['/sdapi/v1/txt2img'].POST.call({prompt, steps: 20})
+  let response = await api['/sdapi/v1/txt2img'].POST({prompt, steps: 20})
 
   const image = response.images[0]
 
